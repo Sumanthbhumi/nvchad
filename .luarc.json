@@ -1,0 +1,11 @@
+{
+    "diagnostics.globals": [
+        "vim",
+        "toggle_number",
+        "toggle_wrap",
+        "set",
+        "augroup",
+        "Snacks",
+        "toggle_diagnostics"
+    ]
+}
