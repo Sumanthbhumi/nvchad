@@ -35,6 +35,47 @@ lspconfig.tailwindcss.setup {
   },
 }
 
+lspconfig.jdtls.setup {
+  on_attach = nvlsp.on_attach,
+  on_init = nvlsp.on_init,
+  capabilities = nvlsp.capabilities,
+  settings = {
+    java = {
+      format = {
+        enabled = false, -- Enable formatting
+        comments = {
+          enabled = true, -- Enable comment formatting
+          wrap = true, -- Enable comment wrapping
+          wrapWidth = 80, -- Set comment wrap width
+        },
+        -- Disable other formatting
+        code = {
+          enabled = false, -- Disable code formatting
+        },
+      },
+    },
+  },
+}
+
+-- for markdown with marksman
+lspconfig.marksman.setup {
+  on_attach = nvlsp.on_attach,
+  on_init = nvlsp.on_init,
+  capabilities = nvlsp.capabilities,
+  filetypes = {
+    "markdown",
+  },
+}
+
+lspconfig.markdown_oxide.setup {
+  on_attach = nvlsp.on_attach,
+  on_init = nvlsp.on_init,
+  capabilities = nvlsp.capabilities,
+  filetypes = {
+    "markdown",
+  },
+}
+
 -- ls.filetype_extend("javascriptreact", { "html" })
 
 -- lsps with default config

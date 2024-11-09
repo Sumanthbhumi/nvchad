@@ -6,11 +6,11 @@ local g = vim.g
 local v = vim.api
 -------------------------------------- options ------------------------------------------
 -- sumanth
-opt.scrolloff = 5 -- Set scrolloff option
+opt.scrolloff = 5    -- Set scrolloff option
 opt.swapfile = false --Swapfile
 
 o.laststatus = 3
-o.showmode = false
+o.showmode = true
 o.cmdheight = 1
 
 o.clipboard = "unnamedplus"
@@ -62,15 +62,15 @@ local is_windows = vim.fn.has "win32" ~= 0
 local sep = is_windows and "\\" or "/"
 local delim = is_windows and ";" or ":"
 vim.env.PATH = table.concat({ vim.fn.stdpath "data", "mason", "bin" }, sep)
-  .. delim
-  .. vim.env.PATH
+    .. delim
+    .. vim.env.PATH
 
 v.nvim_set_hl(0, "Comment", { fg = "#959DD4", bg = "NONE", italic = true })
 v.nvim_set_hl(0, "CursorLineNr", { fg = "#959DD4", bg = "NONE", bold = true })
 v.nvim_set_hl(0, "LineNrAbove", { fg = "#636DA6" })
 v.nvim_set_hl(0, "LineNrBelow", { fg = "#636DA6" })
 
--- restore cursor position
+-------------------------------------- Restore cursor position ------------------------------------------
 local lastplace = vim.api.nvim_create_augroup("LastPlace", {})
 v.nvim_clear_autocmds { group = lastplace }
 v.nvim_create_autocmd("BufReadPost", {

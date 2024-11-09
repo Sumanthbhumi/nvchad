@@ -1,12 +1,23 @@
+-- if true then
+--   return {}
+-- end
 return {
 
   {
+    "stevearc/conform.nvim",
+    event = "BufWritePre", -- uncomment for format on save
+    opts = require "configs.conform",
+  },
+
+  {
+    -- nvchad lspconfig
     "neovim/nvim-lspconfig",
     config = function()
       require "configs.lspconfig"
     end,
   },
   {
+    -- code action with telescope ui
     "nvim-telescope/telescope-ui-select.nvim",
     event = "BufRead",
     config = function()
@@ -109,23 +120,17 @@ return {
   },
 
   {
-    -- for indentation in markdown
-    "bullets-vim/bullets.vim",
-    ft = { "markdown" },
-  },
-
-  {
     "mbbill/undotree",
     event = "VeryLazy",
     vim.keymap.set("n", "<leader><F5>", vim.cmd.UndotreeToggle),
   },
 
   {
-    -- for creation of files
+    -- create files
     "stevearc/oil.nvim",
     dependencies = { "nvim-tree/nvim-web-devicons" },
     keys = {
-      { "-", mode = "n" },
+      { "-",         mode = "n" },
       { "<leader>-", mode = "n" },
     },
     cmd = "Oil",
@@ -140,14 +145,12 @@ return {
           show_hidden = true,
         },
       }
-      -- Open parent directory in current window
       vim.keymap.set(
         "n",
         "-",
         "<CMD>Oil<CR>",
         { desc = "Open parent directory" }
       )
-      -- Open parent directory in floating window
       vim.keymap.set(
         "n",
         "<leader>-",
@@ -156,45 +159,32 @@ return {
       )
     end,
   },
-  {
-    -- vim motions in cmd
-    "smilhey/ed-cmd.nvim",
-    event = "CmdlineEnter",
-    config = function()
-      require("ed-cmd").setup {
-        -- Those are the default options, you can just call setup({}) if you don't want to change the defaults
-        cmdline = {
-          keymaps = {
-            edit = "<C-J>",
-            execute = "<CR>",
-            close = { "<C-C>", "q" },
-          },
-        },
-        -- You enter normal mode in the cmdline with edit, execute a
-        -- command from normal mode with execute and close the cmdline in
-        -- normal mode with close
+  -- {
+  --   -- vim motions in cmd
+  --   "smilhey/ed-cmd.nvim",
+  --   event = "CmdlineEnter",
+  --   config = function()
+  --     require("ed-cmd").setup {
+  --       cmdline = {
+  --         keymaps = {
+  --           edit = "<C-J>",
+  --           execute = "<CR>",
+  --           close = { "<C-C>", "q" },
+  --         },
+  --       },
+  --       pumenu = { max_items = 100 },
+  --     }
+  --   end,
+  -- },
 
-        -- The keymaps fields also accept list of keymaps
-        -- cmdline = { keymaps = { close = { "<C-C>" , "q" } } },
-        pumenu = { max_items = 100 },
-      }
-    end,
-  },
+  -- {
+  --   "nvim-java/nvim-java",
+  --   config = function()
+  --     require "config.java"
+  --   end,
+  -- },
   {
-    "stevearc/conform.nvim",
-    event = "BufWritePre", -- uncomment for format on save
-    opts = require "configs.conform",
-  },
-
-  -- These are some examples, uncomment them if you want to see them work!
-  {
-    "nvim-java/nvim-java",
-    config = function()
-      require "config.java"
-    end,
-  },
-  {
-    -- custom snippets
+    -- custom snippets for user preference
     "L3MON4D3/LuaSnip",
     config = function()
       require("luasnip.loaders.from_lua").load {
@@ -206,54 +196,5 @@ return {
     -- timer
     "siduck/timerly",
     cmd = "TimerlyToggle",
-  },
-  {
-    "nvimtools/none-ls.nvim",
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-      "nvimtools/none-ls-extras.nvim",
-    },
-    event = "BufReadPre",
-    config = function()
-      local null_ls = require "null-ls"
-      local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
-
-      local sources = {
-        null_ls.builtins.formatting.stylua,
-        null_ls.builtins.formatting.prettier,
-        null_ls.builtins.formatting.black,
-        null_ls.builtins.formatting.google_java_format,
-        -- null_ls.builtins.diagnostics.checkstyle.with {
-        --   extra_args = {
-        --     "-c",
-        --     vim.fn.expand "$HOME/.config/checkstyle/google_checks.xml",
-        --   },
-        --   filetypes = { "java" },
-        -- },
-        null_ls.builtins.formatting.prettier.with {
-          filetypes = { "html", "css", "javascript", "typescript" },
-        },
-      }
-
-      null_ls.setup {
-        debug = true,
-        timeout = 8000,
-        sources = sources,
-        on_attach = function(client, bufnr)
-          if client.supports_method "textDocument/formatting" then
-            vim.api.nvim_clear_autocmds { group = augroup, buffer = bufnr }
-            vim.api.nvim_create_autocmd("BufWritePre", {
-              group = augroup,
-              buffer = bufnr,
-              callback = function()
-                vim.lsp.buf.format { bufnr = bufnr }
-              end,
-            })
-          end
-        end,
-      }
-
-      -- vim.keymap.set("n", "<leader>cf", vim.lsp.buf.format, {})
-    end,
   },
 }

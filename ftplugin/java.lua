@@ -27,19 +27,24 @@ local config = {
     "java.base/java.util=ALL-UNNAMED",
     "--add-opens",
     "java.base/java.lang=ALL-UNNAMED",
-    "-javaagent:" .. home .. "/.local/share/nvim/mason/packages/jdtls/lombok.jar",
+    "-javaagent:"
+      .. home
+      .. "/.local/share/nvim/mason/packages/jdtls/lombok.jar",
     "-jar",
-    vim.fn.glob(home .. "/.local/share/nvim/mason/packages/jdtls/plugins/org.eclipse.equinox.launcher_*.jar"),
+    vim.fn.glob(
+      home
+        .. "/.local/share/nvim/mason/packages/jdtls/plugins/org.eclipse.equinox.launcher_*.jar"
+    ),
     "-configuration",
     home .. "/.local/share/nvim/mason/packages/jdtls/config_linux", -- Change to config_mac for macOS
     "-data",
     workspace_dir,
   },
-  
+
   -- Use NvChad's on_attach and capabilities
   on_attach = nvlsp.on_attach,
   capabilities = nvlsp.capabilities,
-  
+
   root_dir = require("jdtls.setup").find_root {
     ".git",
     "mvnw",

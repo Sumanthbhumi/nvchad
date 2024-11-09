@@ -41,15 +41,16 @@ M.ui = {
       "git",
       "%=",
       "recording",
+      "abc",
       "lsp_msg",
       "%=",
       "lsp",
       "cwd",
     },
-    separator_style = "round",
+    separator_style = "arrow",
     modules = {
       abc = function()
-        return "hi"
+        return vim.g.disable_autoformat and "󰉩" or ""
       end,
       xyz = "hi",
       f = "%F",

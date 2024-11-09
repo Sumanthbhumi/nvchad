@@ -30,6 +30,7 @@ require("lazy").setup({
   },
 
   { import = "plugins" },
+  { import = "extras" },
 }, lazy_config)
 
 -- load theme
