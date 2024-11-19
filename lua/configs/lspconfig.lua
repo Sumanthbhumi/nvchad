@@ -4,7 +4,7 @@ require("nvchad.configs.lspconfig").defaults()
 local lspconfig = require "lspconfig"
 
 -- EXAMPLE
-local servers = { "html", "cssls", "clangd" }
+local servers = { "html", "cssls", "marksman", "gopls", "jdtls" }
 local nvlsp = require "nvchad.configs.lspconfig"
 
 lspconfig.ts_ls.setup {
@@ -13,9 +13,6 @@ lspconfig.ts_ls.setup {
   capabilities = nvlsp.capabilities,
   filetypes = {
     "javascript",
-    "html",
-    "css",
-    "scss",
     "typescriptreact",
     "javascriptreact",
   },
@@ -58,22 +55,35 @@ lspconfig.jdtls.setup {
 }
 
 -- for markdown with marksman
-lspconfig.marksman.setup {
-  on_attach = nvlsp.on_attach,
-  on_init = nvlsp.on_init,
-  capabilities = nvlsp.capabilities,
-  filetypes = {
-    "markdown",
-  },
-}
+-- lspconfig.marksman.setup {
+--   on_attach = nvlsp.on_attach,
+--   on_init = nvlsp.on_init,
+--   capabilities = nvlsp.capabilities,
+--   filetypes = {
+--     "markdown",
+--   },
+-- }
+--
+-- lspconfig.markdown_oxide.setup {
+--   on_attach = nvlsp.on_attach,
+--   on_init = nvlsp.on_init,
+--   capabilities = nvlsp.capabilities,
+--   filetypes = {
+--     "markdown",
+--   },
+-- }
+-- lspconfig.textlsp.setup {
+--   on_attach = nvlsp.on_attach,
+--   on_init = nvlsp.on_init,
+--   capabilities = nvlsp.capabilities,
+--   filetypes = { "text", "tex", "org", "md" },
+-- }
+-- for rust
 
-lspconfig.markdown_oxide.setup {
+lspconfig.rust_analyzer.setup {
   on_attach = nvlsp.on_attach,
   on_init = nvlsp.on_init,
   capabilities = nvlsp.capabilities,
-  filetypes = {
-    "markdown",
-  },
 }
 
 -- ls.filetype_extend("javascriptreact", { "html" })

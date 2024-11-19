@@ -21,6 +21,7 @@ return {
         "scss",
         "vue",
         "svelte",
+        "marksman",
         "markdown",
         "markdown_inline",
       },

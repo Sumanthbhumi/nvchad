@@ -7,14 +7,16 @@ return {
 
     opts = function(_, opts)
       local colors = require("catppuccin.palettes").get_palette()
-      --
+      opts.defaults.mappings.i = {
+        ["<Esc>"] = require("telescope.actions").close,
+      }
       -- Define Telescope colors
       local TelescopeColor = {
-        TelescopeMatching = { fg = colors.blue },
+        TelescopeMatching = { fg = colors.blue, bold = true, italic = true },
         TelescopeSelection = {
           -- fg = colors.mantle,
           bg = "#3C3C5E",
-          bold = true,
+          -- bold = true,
         },
         -- TelescopePromptPrefix = { bg = colors.surface0 },
         -- TelescopePromptNormal = { bg = colors.surface0 },

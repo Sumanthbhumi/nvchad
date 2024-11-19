@@ -10,12 +10,12 @@ return {
       { "<leader>sv", "<cmd>TWValues<cr>", desc = "Show tailwind CSS values" },
     },
     opts = {
-      border = "rounded",          -- Valid window border style,
+      border = "rounded", -- Valid window border style,
       show_unknown_classes = true, -- Shows the unknown classes popup
-      focus_preview = true,        -- Sets the preview as the current window
-      copy_register = "",          -- The register to copy values to,
+      focus_preview = true, -- Sets the preview as the current window
+      copy_register = "", -- The register to copy values to,
       keymaps = {
-        copy = "<C-y>",            -- Normal mode keymap to copy the CSS values between {}
+        copy = "<C-y>", -- Normal mode keymap to copy the CSS values between {}
       },
     },
   },
@@ -92,7 +92,7 @@ return {
 
   {
     "kylechui/nvim-surround",
-    version = "*",         -- Use for stability; omit to use `main` branch for the latest features
+    version = "*", -- Use for stability; omit to use `main` branch for the latest features
     event = "BufReadPost", -- event = "VeryLazy",
     config = function()
       require("nvim-surround").setup {}
@@ -207,11 +207,10 @@ return {
   {
     -- leetcoe in neovim :vim leetcode.nvim
     "kawre/leetcode.nvim",
-    enabled = false,
-    build = ":TSUpdate html",
+    enabled = true,
     lazy = false,
     opts = {
-      lang = "cpp",
+      lang = "java",
       -- configuration goes here
     },
   },

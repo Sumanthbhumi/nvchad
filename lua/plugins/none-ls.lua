@@ -1,27 +1,41 @@
--- if true then
---   return {}
--- end
+if true then
+  return {}
+end
 return {
   {
     "nvimtools/none-ls.nvim",
     dependencies = {
       "nvim-lua/plenary.nvim",
+      "mason.nvim",
       "nvimtools/none-ls-extras.nvim",
+      "davidmh/cspell.nvim", -- for spellchecking
     },
     event = "BufReadPre",
     config = function()
       local null_ls = require "null-ls"
+      local cspell = require "cspell"
       local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
+      local filetypes_to_check =
+        { "javascript", "typescript", "python", "markdown" }
+
+      -- Define sources for null-ls
       local sources = {
-        null_ls.builtins.formatting.stylua,
-        null_ls.builtins.formatting.prettier,
-        null_ls.builtins.formatting.black,
-        null_ls.builtins.formatting.google_java_format.with {
-          extra_args = { "--aosp" }, -- Android style uses 80 columns
-        },
-        null_ls.builtins.formatting.prettier.with {
-          filetypes = { "html", "css", "javascript", "typescript" },
-        },
+        -- Cspell diagnostics and code actions
+        -- cspell.diagnostics.with {
+        --   filetypes = filetypes_to_check,
+        -- },
+        -- cspell.code_actions.with {
+        --   filetypes = filetypes_to_check,
+        -- },
+
+        -- Formatter sources
+        -- null_ls.builtins.formatting.google_java_format.with {
+        --   extra_args = { "--aosp" }, -- Android style uses 80 columns
+        -- },
+        -- Uncomment these if needed:
+        -- null_ls.builtins.formatting.stylua,
+        -- null_ls.builtins.formatting.prettier,
+        -- null_ls.builtins.formatting.black,
       }
 
       -- Format toggle function
@@ -45,6 +59,7 @@ return {
         desc = "Toggle format on save",
       })
 
+      -- Setup null-ls with sources and formatting on save
       null_ls.setup {
         debug = true,
         timeout = 8000,

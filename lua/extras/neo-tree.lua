@@ -1,3 +1,6 @@
+-- if true then
+--   return {}
+-- end
 return {
   "nvim-neo-tree/neo-tree.nvim",
   branch = "v3.x",
@@ -54,7 +57,7 @@ return {
 
     -- You can adjust this option based on your preferences
     local O = {
-      transparent_background = false,
+      transparent_background = true,
     }
 
     local function get_highlights()

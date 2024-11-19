@@ -58,3 +58,5 @@ v.nvim_set_hl(0, "CursorLineNr", { fg = "#959DD4", bg = "NONE", bold = true })
 -- })
 --
 -- vim.cmd.colorscheme "catppuccin"
+-- set conceallevel to 3
+-- vim.opt.conceallevel = 2

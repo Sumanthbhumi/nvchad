@@ -161,7 +161,7 @@ map("n", "K", function()
 end, { desc = "Show hover" })
 -- rename
 map("n", "<leader>gR", function()
-  require "nvchad.lsp.renamer"()
+  require "nvchad.lsp.renamer" ()
 end, { desc = "Rename" })
 
 map({ "n", "t" }, "<A-'>", function()
@@ -207,7 +207,7 @@ vim.api.nvim_set_keymap(
 
 -- Create an autocmd group for diagnostic handling
 local diagnostic_augroup =
-  vim.api.nvim_create_augroup("DiagnosticHandler", { clear = true })
+    vim.api.nvim_create_augroup("DiagnosticHandler", { clear = true })
 
 -- Create autocmd for cursor line handling
 vim.api.nvim_create_autocmd("CursorMoved", {
@@ -219,7 +219,7 @@ vim.api.nvim_create_autocmd("CursorMoved", {
         format = function(diagnostic)
           if diagnostic.lnum == curr_line then
             ---@diagnostic disable-next-line: return-type-mismatch
-            return nil -- Hide virtual text for current line
+            return nil              -- Hide virtual text for current line
           end
           return diagnostic.message -- Show virtual text for all other lines
         end,
