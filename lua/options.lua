@@ -6,12 +6,12 @@ local g = vim.g
 local v = vim.api
 -------------------------------------- options ------------------------------------------
 -- sumanth
-opt.scrolloff = 5    -- Set scrolloff option
+opt.scrolloff = 5 -- Set scrolloff option
 opt.swapfile = false --Swapfile
 
 o.laststatus = 3
 o.showmode = true
-o.cmdheight = 1
+o.cmdheight = 0
 
 o.clipboard = "unnamedplus"
 o.cursorline = true
@@ -62,8 +62,8 @@ local is_windows = vim.fn.has "win32" ~= 0
 local sep = is_windows and "\\" or "/"
 local delim = is_windows and ";" or ":"
 vim.env.PATH = table.concat({ vim.fn.stdpath "data", "mason", "bin" }, sep)
-    .. delim
-    .. vim.env.PATH
+  .. delim
+  .. vim.env.PATH
 
 v.nvim_set_hl(0, "Comment", { fg = "#959DD4", bg = "NONE", italic = true })
 v.nvim_set_hl(0, "CursorLineNr", { fg = "#959DD4", bg = "NONE", bold = true })

@@ -54,7 +54,7 @@ return {
     opts = {},
     dependencies = {
       "nvim-treesitter/nvim-treesitter",
-      "echasnovski/mini.nvim",
+      -- "echasnovski/mini.nvim",
     }, -- if you use the mini.nvim suite
   },
 

@@ -90,11 +90,11 @@ if true then
             greetingIndex = 5
           end
           return "\t\t"
-              .. datetime
-              .. "\t"
-              .. greetingsTable[greetingIndex]
-              .. ", "
-              .. name
+            .. datetime
+            .. "\t"
+            .. greetingsTable[greetingIndex]
+            .. ", "
+            .. name
         end
 
         local userName = "Bobby"
@@ -146,8 +146,8 @@ if true then
         require("alpha").setup(dashboard.opts)
 
         -- Define custom colors for the dashboard
-        vim.api.nvim_set_hl(0, "AlphaHeader", { fg = "#89b4fa", bold = true })   -- Pink header text
-        vim.api.nvim_set_hl(0, "AlphaButtons", { fg = "#cba6f7", bold = true })  -- Purple button text
+        vim.api.nvim_set_hl(0, "AlphaHeader", { fg = "#89b4fa", bold = true }) -- Pink header text
+        vim.api.nvim_set_hl(0, "AlphaButtons", { fg = "#cba6f7", bold = true }) -- Purple button text
         vim.api.nvim_set_hl(0, "AlphaShortcut", { fg = "#a6e3a1", bold = true }) -- Green shortcut text
         vim.api.nvim_set_hl(0, "AlphaFooter", { fg = "#f2cdcd", italic = true }) -- Cyan footer text
 
@@ -158,17 +158,17 @@ if true then
             local stats = require("lazy").stats()
             local ms = math.floor(stats.startuptime) .. " ms"
             local version = "  󰥱 v"
-                .. vim.version().major
-                .. "."
-                .. vim.version().minor
-                .. "."
-                .. vim.version().patch
+              .. vim.version().major
+              .. "."
+              .. vim.version().minor
+              .. "."
+              .. vim.version().patch
             local plugins = "⚡ Loaded "
-                .. stats.loaded
-                .. "/"
-                .. stats.count
-                .. " plugins in "
-                .. ms
+              .. stats.loaded
+              .. "/"
+              .. stats.count
+              .. " plugins in "
+              .. ms
             local footer = version .. "\t" .. plugins .. "\n"
             dashboard.section.footer.val = footer
             pcall(vim.cmd.AlphaRedraw)
