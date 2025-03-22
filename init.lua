@@ -60,3 +60,32 @@ v.nvim_set_hl(0, "CursorLineNr", { fg = "#959DD4", bg = "NONE", bold = true })
 -- vim.cmd.colorscheme "catppuccin"
 -- set conceallevel to 3
 -- vim.opt.conceallevel = 2
+-- require("lspconfig").harper_ls.setup {
+--   settings = {
+--     ["harper-ls"] = {
+--       userDictPath = "",
+--       fileDictPath = "",
+--       linters = {
+--         SpellCheck = true,
+--         SpelledNumbers = false,
+--         AnA = true,
+--         SentenceCapitalization = true,
+--         UnclosedQuotes = true,
+--         WrongQuotes = false,
+--         LongSentences = true,
+--         RepeatedWords = true,
+--         Spaces = true,
+--         Matcher = true,
+--         CorrectNumberSuffix = true,
+--       },
+--       codeActions = {
+--         ForceStable = false,
+--       },
+--       markdown = {
+--         IgnoreLinkTitle = false,
+--       },
+--       diagnosticSeverity = "hint",
+--       isolateEnglish = false,
+--     },
+--   },
+-- }

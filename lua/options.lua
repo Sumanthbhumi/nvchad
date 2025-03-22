@@ -8,6 +8,7 @@ local v = vim.api
 -- sumanth
 opt.scrolloff = 5 -- Set scrolloff option
 opt.swapfile = false --Swapfile
+opt.list = true -- Show listchars
 
 o.laststatus = 3
 o.showmode = true

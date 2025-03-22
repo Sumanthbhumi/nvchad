@@ -3,6 +3,7 @@ return {
     "zbirenbaum/copilot.lua",
     event = "InsertEnter",
     build = ":Copilot auth",
+    enabled = false,
     opts = {
       filetypes = {
         ["*"] = true,

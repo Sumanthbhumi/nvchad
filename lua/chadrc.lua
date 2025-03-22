@@ -24,7 +24,7 @@ M.ui = {
   },
   cmp = {
     lspkind_text = true,
-    style = "flat_dark",
+    style = "default",
     format_colors = {
       tailwind = true,
     },
